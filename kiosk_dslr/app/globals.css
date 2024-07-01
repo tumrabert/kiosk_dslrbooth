@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Define the base styles for the input and label */
+.input-container {
+  position: relative;
+  width: 100%;
+  min-width: 200px;
+  height: 40px; /* Adjust height as needed */
+  margin: 1rem; /* Adjust margin as needed */
+}
+
+.input-field {
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  color: #374151; /* Blue-gray-700 */
+  font-family: 'Sans-serif';
+  font-size: 0.875rem; /* 14px */
+  padding: 0.625rem 0.75rem; /* px-3 py-2.5 */
+  border: 1px solid #cbd5e1; /* Blue-gray-200 */
+  border-radius: 0.4375rem; /* 7px */
+  outline: none;
+  transition: all 0.3s;
+}
+
+.input-field:focus {
+  border-color: #1f2937; /* Gray-900 */
+  border-width: 2px;
+}
+
+.input-label {
+  position: absolute;
+  top: -0.5rem; /* -1.5 */
+  left: 0;
+  font-size: 0.6875rem; /* 11px */
+  color: #64748b; /* Gray-500 */
+  transition: all 0.3s;
+  pointer-events: none;
+  user-select: none;
+}
+
+.input-field:focus + .input-label,
+.input-field:not(:placeholder-shown) + .input-label {
+  top: -1rem; /* Adjust as needed for label positioning */
+  font-size: 0.6875rem; /* 11px */
+  color: #1f2937; /* Gray-900 */
+}
+
+.input-field:disabled {
+  background-color: #e2e8f0; /* Blue-gray-50 */
+  border: 0;
+}
+
+.input-field:disabled + .input-label {
+  color: #64748b; /* Blue-gray-500 */
+}
